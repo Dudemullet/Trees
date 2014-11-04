@@ -19,7 +19,20 @@ function Tree(val) {
   this.children = this.root.children;
 
   this.toString = function() {
-    return "hi";
+    var queue = [this.root];
+    var str = "";
+
+    while(queue.length > 0) {
+      var node = queue.shift();
+
+      str = str.concat(node.value);
+
+      node.children.forEach(function(child) {
+          queue.push(child);
+      });
+    }
+
+    return str;
   }
 
   return this;
