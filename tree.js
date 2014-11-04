@@ -78,4 +78,20 @@ function breadFirst(node, func) {
 }
 
 var tree = getTestTree ();
-console.log(tree.toString());
+console.log("Breadth first search: \n");
+breadFirst(tree.root, function(node) {
+  console.log(node.value);
+});
+console.log("Depth first search: \n");
+depthFirst(tree.root, function(node) {
+  console.log(node.value);
+});
+// depthFirst(tree.root, depthSearch(5) );
+
+function  depthSearch(num) {
+ return function(node) {
+  if(node.value == num) {
+    console.log("Num found: " + num);
+  }
+ }
+}
