@@ -53,5 +53,15 @@ function getTestTree() {
   return tree;
 }
 
+function depthFirst(node, func) {
+  if(func) {
+    func(node);
+  }
+
+  node.children.forEach(function(child) {
+    depthFirst(child, func);
+  });
+}
+
 var tree = getTestTree ();
 console.log(tree.toString());
