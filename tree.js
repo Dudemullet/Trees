@@ -63,5 +63,19 @@ function depthFirst(node, func) {
   });
 }
 
+function breadFirst(node, func) {
+  var queue = [node];
+  while(queue.length) {
+    node = queue.shift();
+    if(func) {
+      func(node);
+    }
+
+    node.children.forEach(function(child) {
+      queue.push(child);
+    });
+  }
+}
+
 var tree = getTestTree ();
 console.log(tree.toString());
