@@ -63,6 +63,18 @@ function depthFirst(node, func) {
   });
 }
 
+function depthFirstSearch(node, val) {
+  if (node.value == val) {
+    return true;
+  }
+  for (var i = 0; i < node.children.length; i++) {
+    if (depthFirstSearch(node.children[i], val)) {
+      return true;
+    }
+  }
+  return false;
+}
+
 function breadFirst(node, func) {
   var queue = [node];
   while(queue.length) {
@@ -75,6 +87,21 @@ function breadFirst(node, func) {
       queue.push(child);
     });
   }
+}
+
+function breadthFirstSearch(node, val) {
+  var queue = [node];
+  while (queue.length) {
+    node = queue.shift();
+    if (node.value == val) {
+      return true;
+    }
+
+    for (var i = 0; i < node.children.length; i++) {
+      queue.push(node.children[i]);
+    }
+  }
+  return false;
 }
 
 var tree = getTestTree ();
